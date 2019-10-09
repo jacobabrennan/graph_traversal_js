@@ -1,0 +1,19 @@
+{
+  "name": "@jacobabrennan/pathfinding",
+  "version": "0.0.1",
+  "description": "Algorithms and Data Structures for Path Finding",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobabrennan/path_finding_js.git"
+  },
+  "author": "JacobABrennan\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C \u001b[C\u001b[DA. Brennan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacobabrennan/path_finding_js/issues"
+  },
+  "homepage": "https://github.com/jacobabrennan/path_finding_js#readme"
+}
