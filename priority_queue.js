@@ -21,6 +21,15 @@
         Push(newItem): Adds newItem to the queue
         Pop(): Removes and returns the item with the greatest priority
 */
+/*
+    Note: The implementations of both push and pop contain not only the logic
+    required to push and pop, but also for sifting down and bubbling up. These
+    behaviors are often defined in separate private methods, but I've chosen not
+    to do so. The result is larger and more complex looking methods, but no
+    confusion over behavior: there is never a time where sift or bubble would be
+    called outside of push or pop, so it would be improper to define them
+    separetly.
+*/
 
 //------------------------------------------------
 export default class PriorityQueue {
