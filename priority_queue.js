@@ -16,10 +16,12 @@
         +1: P1 has greater priority
         -1: P2 has greater priority
     
-    PriorityQueue instances have two methods, push and pop, that function as
-    expected from similarly named array methods:
-        Push(newItem): Adds newItem to the queue
-        Pop(): Removes and returns the item with the greatest priority
+    PriorityQueue instances have four methods that function as expected from
+    similarly named array methods:
+        push(newItem): Adds newItem to the queue
+        pop(): Removes and returns the item with the greatest priority
+        peek(): Returns the item with the greatest priority, without removing it
+        contains(testItem): Returns true if item is in queue, false otherwise
 */
 /*
     Note: The implementations of both push and pop contain not only the logic
@@ -37,6 +39,8 @@ export default class PriorityQueue {
         this.compare = comparator;
         this.storage = [];
     }
+    
+    //-- Adding and Removing Items -------------------
     push(item) {
         // Add item to the end of the storage array
         this.storage.push(item);
@@ -95,5 +99,16 @@ export default class PriorityQueue {
         }
         // Return the original top of the heap
         return nodeNext;
+    }
+    
+    //-- Membership and emptiness testing ------------
+    peek() {
+        return this.storage[0];
+    }
+    contains(testItem) {
+        if(this.storage.indexOf(testItem) !== -1) {
+            return true;
+        }
+        return false;
     }
 }
