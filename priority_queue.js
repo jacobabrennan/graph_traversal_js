@@ -1,13 +1,18 @@
 
 
-//== Priority Queue ============================================================
-/*
+/*== Priority Queue: Documentation =============================================
+
+    --------------------------------------------------
+    Background:
+
     A priority queue is a data structure used to keep items sorted by priority.
     As items are added to the queue, they are placed in order based on a sorting
     function. The highest priority item can be popped from the queue at any time
     without disrupting the order of the queue.
-*/
-/*
+    
+    --------------------------------------------------
+    Interface:
+
     This module exports one class, the PriorityQueue. The PriorityQueue
     constructor takes one argument, a comparator function used to sort items
     added to the queue. The comparator must be a function of two arguments, P1
@@ -16,15 +21,18 @@
         +1: P1 has greater priority
         -1: P2 has greater priority
     
-    PriorityQueue instances have four methods that function as expected from
-    similarly named array methods:
+    PriorityQueue instances have four methods and one property that function as
+    expected from similarly named array methods / properties:
+        length: The number of items in the queue
         push(newItem): Adds newItem to the queue
         pop(): Removes and returns the item with the greatest priority
         peek(): Returns the item with the greatest priority, without removing it
         contains(testItem): Returns true if item is in queue, false otherwise
-*/
-/*
-    Note: The implementations of both push and pop contain not only the logic
+
+    --------------------------------------------------
+    Implementation Notes:
+    
+    The implementations of both push and pop contain not only the logic
     required to push and pop, but also for sifting down and bubbling up. These
     behaviors are often defined in separate private methods, but I've chosen not
     to do so. The result is larger and more complex looking methods, but no
@@ -33,7 +41,9 @@
     separetly.
 */
 
-//------------------------------------------------
+
+//== Priority Queue: Implementation ============================================
+
 export default class PriorityQueue {
     constructor(comparator) {
         this.compare = comparator;
@@ -101,7 +111,10 @@ export default class PriorityQueue {
         return nodeNext;
     }
     
-    //-- Membership and emptiness testing ------------
+    //-- Membership and Emptiness testing ------------
+    get length() {
+        return this.storage.length;
+    }
     peek() {
         return this.storage[0];
     }
