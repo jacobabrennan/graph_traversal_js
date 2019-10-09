@@ -2,7 +2,7 @@
   "name": "@jacobabrennan/pathfinding",
   "version": "0.0.1",
   "description": "Algorithms and Data Structures for Path Finding",
-  "main": "index.js",
+  "main": "index.mjs",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

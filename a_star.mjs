@@ -36,7 +36,7 @@
 //== A* Path Finding: Implementation ===========================================
 
 //-- Dependencies --------------------------------
-import PriorityQueue from "./priority_queue.js";
+import PriorityQueue from "./priority_queue";
 
 //-- A* Algorithm --------------------------------
 export default function aStar(nodeStart, costHeuristic, getNeighbors, options) {
