@@ -36,7 +36,7 @@
 //== A* Path Finding: Implementation ===========================================
 
 //-- Dependencies --------------------------------
-import PriorityQueue from './priority_queue';
+import PriorityQueue from './priority_queue.mjs';
 
 //-- A* Algorithm --------------------------------
 export default function aStar(nodeStart, costHeuristic, getNeighbors, options) {
@@ -45,9 +45,9 @@ export default function aStar(nodeStart, costHeuristic, getNeighbors, options) {
     const maxDepth = options.maxDepth || 0;
     const maxCost = options.maxCost || 0;
     // Create functions f and g, including cache for g, and comparator for queue
-    let costRunningCache = {};
-    costRunningCache[nodeStart] = 0;
-    function costRunning(node) { return costRunningCache[node];}
+    let costRunningCache = new WeakMap();
+    costRunningCache.set(nodeStart, 0);
+    function costRunning(node) { return costRunningCache.get(node);}
     function costTotal(node) { return costRunning(node)+costHeuristic(node);}
     function comparator(N1, N2) {
         return Math.sign(costTotal(N2) - costTotal(N1));
@@ -58,7 +58,7 @@ export default function aStar(nodeStart, costHeuristic, getNeighbors, options) {
     const nodesOpen = new PriorityQueue(comparator);
     nodesOpen.push(nodeStart);
     const nodesClosed = new Set();
-    const edgeLinks = {};
+    const edgeLinks = new WeakMap();
     // Expand nodes until a goal node is reached: costHeuristic(node) <= 0
     let nodesExpanded = 0;
     let nodeGoal;
@@ -93,8 +93,8 @@ export default function aStar(nodeStart, costHeuristic, getNeighbors, options) {
             // Skip nodes that are too costly
             if(maxCost && costNeighbor > maxCost) { continue;}
             // Store running cost and path to neighbor node from current node
-            costRunningCache[nodeNeighbor] = costNeighbor;
-            edgeLinks[nodeNeighbor] = nodeCurrent;
+            costRunningCache.set(nodeNeighbor, costNeighbor);
+            edgeLinks.set(nodeNeighbor, nodeCurrent);
             // Add neighbor to open nodes
             if(!nodesOpen.contains(nodeNeighbor)) {
                 nodesOpen.push(nodeNeighbor)
@@ -107,7 +107,7 @@ export default function aStar(nodeStart, costHeuristic, getNeighbors, options) {
     const total_path = [];
     do {
         total_path.unshift(nodeGoal);
-        nodeGoal = edgeLinks[nodeGoal];
+        nodeGoal = edgeLinks.get(nodeGoal);
     }
     while(nodeGoal)
     // Return generated path

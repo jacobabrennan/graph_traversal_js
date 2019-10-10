@@ -19,8 +19,8 @@
 //== Path Finding: Implementation ==============================================
 
 //-- Dependencies --------------------------------
-import PriorityQueue from './priority_queue';
-import aStar from './a_star';
+import PriorityQueue from './priority_queue.mjs';
+import aStar from './a_star.mjs';
 
 //-- Collected Resources for Exporting -----------
 export {PriorityQueue};
